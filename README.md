@@ -1,3 +1,104 @@
+# Frontend Boilerplate
+
+## Setup Node.js
+
+Inorder to setup NodeJS you need to fellow the current steps:
+
+### Mac OS X
+
+* Step1: Install Home brew
+
+```
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+$ brew -v
+```
+
+* Step2: Install Node using Brew
+
+```
+$ brew install node
+
+$ node -v
+
+$ npm -v
+```
+
+### Linux Systems
+
+* Step1: Install Node using apt-get
+
+```
+$ sudo apt-get install curl python-software-properties
+
+$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+
+$ sudo apt-get install nodejs
+
+$ node -v
+
+$ npm -v
+```
+## Setup React Frontend Boilerplate Application
+
+* Step1: Git clone the application
+
+```
+$ git clone https://github.com/deakin-launchpad/react-frontend-boilerplate.git
+
+$ cd react-frontend-boilerplate
+```
+
+* Step2: Install node modules
+
+```
+$ npm i
+
+or
+
+$ npm install
+```
+
+* Step3: Start the application
+
+```
+For Development Mode
+
+$ npm start
+```
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Configuration
+
+The basic configuration of the application is defined in JSON files. In the future, these files can be used to define application configuration during development. The sample config files are already created with basic configuration to start with.
+- Dev Mode
+    1. File location: `src/configurations/devMode.json`.
+    2. The Dev mode button allows users to login into an application without entering login credentials. Instead, they can be configured by updating `user & password` keys and will be auto-filled for quick login. This will only work when the application is connected to a server and the user already is registered inside the database.
+    3.  During development, the login using server can be skipped by changing `"bypassBackend": false` to `"bypassBackend": true` .
+    4. The dev mode button position can be configured using keys namely `verticlePosition` which accepts `top or bottom` value & `horizontalPosition` accepts `left or right` value.
+- Side Menu
+	1. File location `src/configurations/sideMenuItems.json`.
+	2. The application side menu can be configured easily using a JSON file to avoid writing long lines of code.
+	```
+	{
+		items: [
+			{
+				"name": Name of button,
+				"type": "button",
+				"icon": "home", // COMMENT: Add icon name you would like to display
+				"controller": "/home", // COMMENT: Add path name to you view
+				"customTitle": "This is my custom title" // COMMENT: The title will be displayed along with icon in side menu
+	}
+	```
+	3. You can find icon names from [Material Icons](https://material.io/resources/icons/?style=baseline).
+
+- IDB config
+	1. File location `src/database/idb/config.json`.
+    2. The idb uses IndexedDB API to store a significant amount of structured data, including files/blobs.
+    3. The boilerplate provides the basic configuration for idb where the main configurable key is `dbName`. The name provided in the file will be used for storage in the client browser.
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
