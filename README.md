@@ -2,7 +2,7 @@
 
 ## Setup Node.js
 
-Inorder to setup NodeJS you need to fellow the current steps:
+In order to setup NodeJS you need to follow the current steps:
 
 ### Mac OS X
 
@@ -70,7 +70,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Configuration
 
-The basic configuration of the application is defined in JSON files. In the future, these files can be used to define application configuration during development. The sample config files are already created with basic configuration to start with.
+The basic configuration of the application is defined in JSON files. In the future, these files can be used to define application configuration during development. The config files are already created with basic configuration to start with.
 - Dev Mode
     1. File location: `src/configurations/devMode.json`.
     2. The Dev mode button allows users to login into an application without entering login credentials. Instead, they can be configured by updating `user & password` keys and will be auto-filled for quick login. This will only work when the application is connected to a server and the user already is registered inside the database.
