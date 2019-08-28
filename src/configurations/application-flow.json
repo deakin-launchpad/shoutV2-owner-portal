@@ -1,0 +1,11 @@
+{
+  "errorPage": "/",
+  "defaultHome": "/",
+  "specialCases": [],
+  "generic": [
+    {
+      "current": ["/", "/home", "/menu"],
+      "previous": "/"
+    }
+  ]
+}

@@ -1,8 +1,9 @@
 {
   "dbName": "boilerplate",
-  "drop": "true",
+  "drop": false,
   "genericStores": [
     "generic",
-    "GENERIC2"
+    "GENERIC2",
+    "naviagtionPath"
   ]
 }
