@@ -113,13 +113,8 @@ export const Login = () => {
         <Grid item xs={12} className={classes.developMessage}>
           <Box mt={5}>
             <Typography variant="body2" color="textSecondary" align="center">
-<<<<<<< HEAD
-              Developed by Deakin LaunchpaP
-        </Typography>
-=======
               Developed by Deakin Launchpad
             </Typography>
->>>>>>> e2620e61a2138e3ebd1ac9b95f4ca02078260e5d
           </Box>
         </Grid>
       </Grid>
