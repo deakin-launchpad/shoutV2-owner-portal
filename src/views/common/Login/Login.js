@@ -54,11 +54,14 @@ export const Login = () => {
       setLoginStatus(true);
       setAccessToken('dummyToken');
     } else {
+      const responseHandler=(data)=>{
+        setAccessToken(data.accessToken);
+      }
       let details = {
-        username: (devMode ? (DevModeConfig.devDetails !== undefined ? DevModeConfig.devDetails.user : '') : emailId),
+        emailId: (devMode ? (DevModeConfig.devDetails !== undefined ? DevModeConfig.devDetails.user : '') : emailId),
         password: (devMode ? (DevModeConfig.devDetails !== undefined ? DevModeConfig.devDetails.password : '') : password)
       };
-      API.login(details, setLoginStatus);
+      API.login(details, responseHandler);
     }
   };
 
