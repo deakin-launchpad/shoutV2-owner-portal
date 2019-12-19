@@ -7,7 +7,25 @@
       "type": "button",
       "icon": "home",
       "controller": "/home",
-      "customTitle": "Welcome to Boiler Plate",
+      "customTitle": "SHOUT",
+      "isFavourite": true,
+      "subMenuItems": []
+    },
+    {
+      "name": "Merchant",
+      "type": "button",
+      "icon": "home",
+      "controller": "/merchant",
+      "customTitle": "SHOUT",
+      "isFavourite": true,
+      "subMenuItems": []
+    },
+    {
+      "name": "Company",
+      "type": "button",
+      "icon": "home",
+      "controller": "/Company",
+      "customTitle": "SHOUT",
       "isFavourite": true,
       "subMenuItems": []
     },
