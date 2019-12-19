@@ -9,7 +9,6 @@ import { MobileMenu } from './dependants/mobileMenu/mobileMenu';
 import { Example } from './dependants/Example/Example';
 import Company from './dependants/Company'
 import Merchant from './dependants/Merchant'
-import MerchantDetail from './dependants/MerchantDetail'
 export {
   Example,
   Login,
@@ -19,5 +18,4 @@ export {
   FourOFour,
   Merchant,
   Company,
-  MerchantDetail
 };
