@@ -7,11 +7,17 @@ import { Register } from './common/Register/Register';
 import { Home } from './dependants/Home/Home';
 import { MobileMenu } from './dependants/mobileMenu/mobileMenu';
 import { Example } from './dependants/Example/Example';
+import Company from './dependants/Company'
+import Merchant from './dependants/Merchant'
+import MerchantDetail from './dependants/MerchantDetail'
 export {
   Example,
   Login,
   Register,
   Home,
   MobileMenu,
-  FourOFour
+  FourOFour,
+  Merchant,
+  Company,
+  MerchantDetail
 };
