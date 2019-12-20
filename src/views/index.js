@@ -7,8 +7,10 @@ import { Register } from './common/Register/Register';
 import { Home } from './dependants/Home/Home';
 import { MobileMenu } from './dependants/mobileMenu/mobileMenu';
 import { Example } from './dependants/Example/Example';
-import Company from './dependants/Company'
-import Merchant from './dependants/Merchant'
+import Company from './dependants/Company/Company'
+import Merchant from './dependants/Merchant/Merchant'
+import MerchantDetail from './dependants/Merchant/MerchantDetail'
+
 export {
   Example,
   Login,
@@ -18,4 +20,5 @@ export {
   FourOFour,
   Merchant,
   Company,
+  MerchantDetail
 };
