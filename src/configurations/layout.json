@@ -1,13 +1,40 @@
 {
-  "headerWelcomeText": "Hello WORLD!",
+  "headerWelcomeText": "Welcome to SHOUT!",
   "landingPage": "/home",
   "menuItems": [
+    {
+      "name": "Profile",
+      "type": "button",
+      "icon": "face",
+      "controller": "/profile",
+      "customTitle": "Profile",
+      "isFavourite": true,
+      "subMenuItems": []
+    },
     {
       "name": "HOME",
       "type": "button",
       "icon": "home",
       "controller": "/home",
-      "customTitle": "Welcome to Boiler Plate",
+      "customTitle": "SHOUT",
+      "isFavourite": true,
+      "subMenuItems": []
+    },
+    {
+      "name": "Merchant",
+      "type": "button",
+      "icon": "storefront",
+      "controller": "/merchant",
+      "customTitle": "SHOUT",
+      "isFavourite": true,
+      "subMenuItems": []
+    },
+    {
+      "name": "Company",
+      "type": "button",
+      "icon": "business",
+      "controller": "/Company",
+      "customTitle": "SHOUT",
       "isFavourite": true,
       "subMenuItems": []
     },
@@ -16,7 +43,7 @@
       "type": "logout",
       "icon": "logout",
       "controller": "",
-      "customTitle": "Welcome to Boiler Plate",
+      "customTitle": "Welcome to SHOUT!",
       "isFavourite": false,
       "subMenuItems": []
     }
@@ -28,5 +55,12 @@
   "sideMenu": {
     "permanent": false,
     "default": "open"
+  },
+  "theme": {
+    "colors": {
+      "primary": "#039be5",
+      "secondary": "#c62828"
+    },
+    "appBarElevation": 1
   }
 }
