@@ -1,11 +1,11 @@
-import React, { useEffect, useContext } from 'react';
+import React from 'react';
 import { Grid, Typography, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles(({
   container: {
     padding: '3vw'
   }
-}))
+}));
 export const Home = () => {
   const classes = useStyles();
 
