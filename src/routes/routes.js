@@ -4,7 +4,7 @@
 import React, { useContext } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { LoginContext } from 'contexts';
-import { Login, Register, Home, MobileMenu, FourOFour, Example, Merchant, Company, MerchantDetail } from 'views';
+import { Login, Register, Home, MobileMenu, FourOFour, Example, Merchant, Company, MerchantDetail, CompanyDetail, Profile } from 'views';
 import { Layout } from '../layout';
 import { LayoutConfig } from 'configurations';
 import { LoadingScreen } from 'components';
@@ -28,7 +28,8 @@ export const AppRoutes = (props) => {
       <Route exact path='/merchant' render={() => ((loginStatus === false ? <Redirect to={{ pathname: '/login' }}  {...props} /> : <Layout> <Merchant  {...props} /></Layout>))} />
       <Route exact path='/merchantdetail' render={() => ((loginStatus === false ? <Redirect to={{ pathname: '/login' }}  {...props} /> : <Layout> <MerchantDetail  {...props} /></Layout>))} />
       <Route exact path='/company' render={() => ((loginStatus === false ? <Redirect to={{ pathname: '/login' }}  {...props} /> : <Layout> <Company  {...props} /></Layout>))} />
-
+      <Route exact path='/companyDetail' render={() => ((loginStatus === false ? <Redirect to={{ pathname: '/login' }}  {...props} /> : <Layout> <CompanyDetail  {...props} /></Layout>))} />
+      <Route exact path='/profile' render={() => ((loginStatus === false ? <Redirect to={{ pathname: '/login' }}  {...props} /> : <Layout> <Profile  {...props} /></Layout>))} />
       <Route render={() => ((loginStatus === false ? <Redirect to={{ pathname: '/login' }}  {...props} /> : <Layout><FourOFour  {...props} /></Layout>))} />
     </Switch >
   );

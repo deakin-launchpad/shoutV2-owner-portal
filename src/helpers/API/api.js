@@ -84,7 +84,7 @@ class API {
     }
   }
 
-  createMerchant = (data,callback) => {
+  createMerchant = (data, callback) => {
     axiosInstance.post('/merchant/createMerchant', data, {
       headers: {
         authorization: 'Bearer ' + AccessToken
@@ -110,7 +110,7 @@ class API {
     })
   }
 
-  confirmMerchantClaim = (data,callback) => {
+  confirmMerchantClaim = (data, callback) => {
     axiosInstance.put('/merchant/confirmMerchantClaim', data, {
       headers: {
         authorization: 'Bearer ' + AccessToken
@@ -123,8 +123,8 @@ class API {
     })
   }
 
-  blackUnblackMerchant = (data,callback) => {
-    axiosInstance.put('/merchant/blackUnblackMerchant', data, {
+  blockUnblockMerchant = (data, callback) => {
+    axiosInstance.put('/merchant/blockUnblockMerchant', data, {
       headers: {
         authorization: 'Bearer ' + AccessToken
       }
@@ -136,18 +136,140 @@ class API {
     })
   }
 
-  createSuperAdmin = (data,callback) => {
-    axiosInstance.post('/merchant/createSuperAdmin', data, {
+  createSuperAdmin = (data) => {
+    axiosInstance.post('/admin/createSuperAdmin', data, {
+      headers: {
+        authorization: 'Bearer ' + AccessToken
+      }
+    }).then(response => {
+      notify("Success")
+    }).catch(error => {
+      errorHelper(error)
+    })
+  }
+
+  getCompanies = (callback) => {
+    axiosInstance.get('/owner/getCompanies', {
+      headers: {
+        authorization: 'Bearer ' + AccessToken
+      }
+    }).then(response => {
+      console.log(response.data.data)
+      return callback(response.data.data.companyDetails)
+    }).catch(error => {
+      errorHelper(error)
+    })
+  }
+
+  adminsInsideCompany = (data, callback) => {
+    axiosInstance.post('/owner/adminsInsideCompanies', data, {
+      headers: {
+        authorization: 'Bearer ' + AccessToken
+      }
+    }).then(response => {
+      console.log(response.data.data.adminDetails)
+      return callback(response.data.data.adminDetails)
+    }).catch(error => {
+      errorHelper(error)
+    })
+  }
+
+  usersInsideCompany = (data, callback) => {
+    axiosInstance.post('/owner/usersInsideCompanies', data, {
       headers: {
         authorization: 'Bearer ' + AccessToken
       }
     }).then(response => {
       console.log(response)
-      return callback(response)
+      return callback(response.data.data.userDetails)
     }).catch(error => {
       errorHelper(error)
     })
   }
+
+  merchantDetails = (data, callback) => {
+    axiosInstance.post('/owner/getMerchantProfile', data, {
+      headers: {
+        authorization: 'Bearer ' + AccessToken
+      }
+    }).then(response => {
+      console.log(response)
+      return callback(response.data.data.data)
+    }).catch(error => {
+      errorHelper(error)
+    })
+  }
+
+  blockUnblockAdmin = (data, callback) => {
+    axiosInstance.put('/admin/blockUnblockAdmin', data, {
+      headers: {
+        authorization: 'Bearer ' + AccessToken
+      }
+    }).then(response => {
+      console.log(response)
+      return callback(Math.random)
+    }).catch(error => {
+      errorHelper(error)
+    })
+  }
+
+  blockUnblockUser = (data, callback) => {
+    axiosInstance.put('/admin/blockUnblockUser', data, {
+      headers: {
+        authorization: 'Bearer ' + AccessToken
+      }
+    }).then(response => {
+      console.log(response)
+      return callback(Math.random)
+    }).catch(error => {
+      errorHelper(error)
+    })
+  }
+
+  changePasswordAdmin = async data => {
+    return await axiosInstance
+      .put("/admin/changePassword", data, {
+        headers: {
+          authorization: 'Bearer ' + AccessToken
+        }
+      })
+      .then(response => {
+        return 'Password Sucessfully Changed';
+      })
+      .catch(error => {
+        return 'Change Password Failed';
+      });
+  }
+
+  uploadImage = (data, callback) => {
+    axiosInstance.post('/upload/uploadImage', data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
+    }).then(response => {
+      notify("Image Uploaded")
+      console.log(response.data.data.imageFileURL)
+      return callback(response.data.data.imageFileURL)
+    }).catch(error => {
+      errorHelper(error)
+    })
+  }
+
+  getMerchantClaims = (data, callback) => {
+    axiosInstance.post('/owner/getClaimForMerchant', data, {
+      headers: {
+        authorization: 'Bearer ' + AccessToken
+      }
+    }).then(response => {
+      console.log("claims!!!!!!!", response.data.data.data)
+      return callback(response.data.data.data)
+    }).catch(error => {
+      errorHelper(error)
+    })
+  }
+  
+
+
 }
 const instance = new API();
 export default instance;

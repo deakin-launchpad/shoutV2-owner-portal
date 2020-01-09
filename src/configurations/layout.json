@@ -1,7 +1,16 @@
 {
-  "headerWelcomeText": "Hello WORLD!",
+  "headerWelcomeText": "Welcome to SHOUT!",
   "landingPage": "/home",
   "menuItems": [
+    {
+      "name": "Profile",
+      "type": "button",
+      "icon": "face",
+      "controller": "/profile",
+      "customTitle": "Profile",
+      "isFavourite": true,
+      "subMenuItems": []
+    },
     {
       "name": "HOME",
       "type": "button",
@@ -14,7 +23,7 @@
     {
       "name": "Merchant",
       "type": "button",
-      "icon": "home",
+      "icon": "storefront",
       "controller": "/merchant",
       "customTitle": "SHOUT",
       "isFavourite": true,
@@ -23,18 +32,9 @@
     {
       "name": "Company",
       "type": "button",
-      "icon": "home",
+      "icon": "business",
       "controller": "/Company",
       "customTitle": "SHOUT",
-      "isFavourite": true,
-      "subMenuItems": []
-    },
-    {
-      "name": "Example",
-      "type": "button",
-      "icon": "code",
-      "controller": "/examples",
-      "customTitle": "Example Code File",
       "isFavourite": true,
       "subMenuItems": []
     },
@@ -43,7 +43,7 @@
       "type": "logout",
       "icon": "logout",
       "controller": "",
-      "customTitle": "Welcome to Boiler Plate",
+      "customTitle": "Welcome to SHOUT!",
       "isFavourite": false,
       "subMenuItems": []
     }
