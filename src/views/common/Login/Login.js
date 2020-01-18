@@ -100,6 +100,7 @@ export const Login = () => {
     <div>
       <Grid container spacing={0} justify="center">
         <Grid className={classes.loginBox} item xs={10} sm={6} md={4} lg={3} xl={2}>
+          <Typography variant='h3' color='primary' align='center'>ShoutV2 Owner</Typography>
           <Paper className={classes.paper}>
             <Typography component="h1" variant="h5">
               {pageHeading}

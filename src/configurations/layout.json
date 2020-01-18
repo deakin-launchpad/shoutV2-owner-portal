@@ -1,21 +1,12 @@
 {
   "headerWelcomeText": "Welcome to SHOUT!",
-  "landingPage": "/home",
+  "landingPage": "/merchant",
   "menuItems": [
     {
       "name": "Profile",
       "type": "button",
       "icon": "face",
       "controller": "/profile",
-      "customTitle": "Profile",
-      "isFavourite": true,
-      "subMenuItems": []
-    },
-    {
-      "name": "HOME",
-      "type": "button",
-      "icon": "home",
-      "controller": "/home",
       "customTitle": "SHOUT",
       "isFavourite": true,
       "subMenuItems": []
@@ -58,8 +49,8 @@
   },
   "theme": {
     "colors": {
-      "primary": "#039be5",
-      "secondary": "#c62828"
+      "primary": "#133E5B",
+      "secondary": "#F0B644"
     },
     "appBarElevation": 1
   }

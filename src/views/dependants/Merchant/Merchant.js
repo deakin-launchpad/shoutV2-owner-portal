@@ -3,7 +3,7 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { API } from 'helpers';
 import { Grid, Typography, makeStyles, Button } from '@material-ui/core';
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Switch } from '@material-ui/core';
-import { TableWithSorting, LoadingScreen } from 'components';
+import { TableWithSorting, LoadingAnimation } from 'components';
 
 const useStyles = makeStyles(({
   card: {
@@ -102,7 +102,7 @@ export const Merchant = () => {
         <Grid item xs={1}>
           <Button variant='outlined' onClick={handleDialogOpen}>Add</Button>
         </Grid>
-        {merchantTableList[0] === undefined ? <LoadingScreen /> : <TableWithSorting
+        {merchantTableList[0] === undefined ? <LoadingAnimation /> : <TableWithSorting
           headerElements={headCells}
           data={merchantTableList}
           ignoreKeys={['_id']}

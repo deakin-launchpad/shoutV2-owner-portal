@@ -13,6 +13,7 @@ import { EnhancedEditor } from './common/EnhancedEditor';
 import { EnhancedDrawer } from './common/EnhancedDrawer';
 import { LoginCheck } from './helpers/LoginCheck.js';
 import { TableWithSorting } from './common/TableWithSorting';
+import { LoadingAnimation } from './common/LoadingAnimation';
 export {
   EnhancedNotification as Notification,
   notify,
@@ -29,5 +30,6 @@ export {
   EnhancedEditor,
   EnhancedDrawer,
   LoginCheck,
-  TableWithSorting
+  TableWithSorting,
+  LoadingAnimation
 };

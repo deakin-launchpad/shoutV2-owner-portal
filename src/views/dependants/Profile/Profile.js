@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API } from 'helpers';
-import { Paper, Grid, Typography, Button, OutlinedInput, InputLabel, InputAdornment, IconButton, makeStyles, FormControl } from '@material-ui/core';
+import { Paper, Grid, Typography, Button, OutlinedInput, InputLabel, IconButton, makeStyles, FormControl } from '@material-ui/core';
 import { notify } from 'components/index';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
@@ -118,7 +118,17 @@ export const Profile = () => {
           <Paper>
             <Grid container className={classes.padding} spacing={2}>
               <Grid item xs={12} sm={12} >
-                <Typography variant='h5' gutterBottom>Change Password</Typography>
+                <Grid item xs={12}>
+                  <Typography variant="h5">Change Password</Typography>
+                </Grid>
+                <Grid item xs={12} container justify="flex-end">
+                  <IconButton
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </Grid>
                 <Grid container justify='center'>
                   <Grid item xs={12} sm={4}>
                     <FormControl variant="outlined" className={classes.margin} fullWidth>
@@ -126,16 +136,6 @@ export const Profile = () => {
                       <OutlinedInput
                         type={showPassword ? 'text' : 'password'}
                         onChange={(e) => setOldPassword(e.target.value)}
-                        endAdornment={
-                          <InputAdornment position="end">
-                            <IconButton
-                              onClick={handleClickShowPassword}
-                              onMouseDown={handleMouseDownPassword}
-                            >
-                              {showPassword ? <Visibility /> : <VisibilityOff />}
-                            </IconButton>
-                          </InputAdornment>
-                        }
                         labelWidth={100}
                       />
                     </FormControl>
@@ -144,16 +144,6 @@ export const Profile = () => {
                       <OutlinedInput
                         type={showPassword ? 'text' : 'password'}
                         onChange={(e) => setNewPassword(e.target.value)}
-                        endAdornment={
-                          <InputAdornment position="end">
-                            <IconButton
-                              onClick={handleClickShowPassword}
-                              onMouseDown={handleMouseDownPassword}
-                            >
-                              {showPassword ? <Visibility /> : <VisibilityOff />}
-                            </IconButton>
-                          </InputAdornment>
-                        }
                         labelWidth={110}
                       />
                     </FormControl>
@@ -162,16 +152,6 @@ export const Profile = () => {
                       <OutlinedInput
                         type={showPassword ? 'text' : 'password'}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        endAdornment={
-                          <InputAdornment position="end">
-                            <IconButton
-                              onClick={handleClickShowPassword}
-                              onMouseDown={handleMouseDownPassword}
-                            >
-                              {showPassword ? <Visibility /> : <VisibilityOff />}
-                            </IconButton>
-                          </InputAdornment>
-                        }
                         labelWidth={170}
                       />
                     </FormControl>
