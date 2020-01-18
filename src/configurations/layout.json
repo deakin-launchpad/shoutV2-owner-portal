@@ -35,12 +35,12 @@
       "icon": "logout",
       "controller": "",
       "customTitle": "Welcome to SHOUT!",
-      "isFavourite": false,
+      "isFavourite": true,
       "subMenuItems": []
     }
   ],
   "bottomMobileNavigation": true,
-  "displayMobileMenuHam": true,
+  "displayMobileMenuHam": false,
   "displayMobileHeader": true,
   "menuButtonLabel": "Menu",
   "sideMenu": {

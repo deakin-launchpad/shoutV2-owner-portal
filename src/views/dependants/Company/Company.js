@@ -16,6 +16,11 @@ const useStyles = makeStyles(theme=>({
   large: {
     width: theme.spacing(10),
     height: theme.spacing(10)
+  },
+  add:{
+    width: theme.spacing(10),
+    height: theme.spacing(10),
+    fontSize: theme.spacing(10),
   }
 }));
 const Company = () => {
@@ -98,7 +103,7 @@ const Company = () => {
             <Grid item xs={12} sm={6} lg={4}>
               <Paper className={classes.card} onClick={handleDialogOpen}>
                 <Grid container alignItems='center' justify='center'>
-                  <Icon component='span' className={classes.large} style={{fontSize:'7vw'}}>add</Icon>
+                  <Icon component='span' className={classes.add}>add</Icon>
                 </Grid>
               </Paper>
             </Grid>

@@ -107,15 +107,15 @@ const CompanyDetail = ({ ...props }) => {
     <Grid container className={classes.container}>
       {(isLoad && selectedCompany ? <Grid container spacing={3}>
         <Grid container item>
-          <Grid item xs={3} sm={1}>
+          <Grid item xs={2} sm={1}>
             <Avatar alt={selectedCompany.companyName ? selectedCompany.companyName : 'Company not registered'} src={selectedCompany.companyLogo ? selectedCompany.companyLogo : 'Company not registered'} className={classes.large} />
           </Grid>
-          <Grid item xs={6} sm={9}>
+          <Grid item xs={8} sm={9}>
             <Typography variant='h4'>{selectedCompany.companyName ? selectedCompany.companyName : 'Company not registered'}</Typography>
             <Typography variant='subtitle1'>{selectedCompany.contactEmail ? selectedCompany.contactEmail : null}</Typography>
             <Typography variant='subtitle1'>{selectedCompany.location ? selectedCompany.location + ': ' : null}{selectedCompany.businessPhoneNumber ? selectedCompany.businessPhoneNumber : null}</Typography>
           </Grid>
-          <Grid item xs={3} sm={2} container justify="flex-end" alignItems="center">
+          <Grid item xs={2} sm={2} container justify="flex-end" alignItems="center">
             <Button component={Link} to="/company" color='primary' variant="contained">Back</Button>
           </Grid>
         </Grid>

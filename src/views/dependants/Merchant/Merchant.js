@@ -95,11 +95,11 @@ export const Merchant = () => {
   return (isSelected ? (<Redirect to={{ pathname: '/merchantdetail', state: { selectedMerchant } }} />
   ) : (
     <Grid container className={classes.container} spacing={6}>
-      <Grid container className={classes.container} item xs={12} spacing={3}>
-        <Grid item xs={11}>
+      <Grid container className={classes.container} item xs={12}>
+        <Grid item xs={8}>
           <Typography variant='h4'>Merchants</Typography>
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={4} container justify="flex-end" alignItems="center">
           <Button variant='outlined' onClick={handleDialogOpen}>Add</Button>
         </Grid>
         {merchantTableList[0] === undefined ? <LoadingAnimation /> : <TableWithSorting

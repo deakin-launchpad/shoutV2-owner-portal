@@ -153,13 +153,13 @@ const MerchantDetail = ({ ...props }) => {
     <Grid container className={classes.container}>
       {(isLoad && merchantDetails ? <Grid container spacing={3}>
         <Grid item container spacing={1}>
-          <Grid item xs={3} sm={1}>
+          <Grid item xs={2} sm={1}>
             <Avatar alt={merchantDetails.storeName ? merchantDetails.storeName : 'Merchant not registered'} src={merchantDetails.profilePicture ? merchantDetails.profilePicture.thumbnail : 'Merchant not registered'} className={classes.large} />
           </Grid>
-          <Grid item xs={6} sm={9} container alignItems="center">
+          <Grid item xs={8} sm={9} container alignItems="center">
             <Typography variant='h4' align='left'>{merchantDetails.storeName ? merchantDetails.storeName : 'Merchant not registered'}</Typography>
           </Grid>
-          <Grid item xs={3} sm={2} container justify="flex-end" alignItems="center">
+          <Grid item xs={2} sm={2} container justify="flex-end" alignItems="center">
             <Button component={Link} to="/merchant" color='primary' variant="contained">Back</Button>
           </Grid>
         </Grid>
