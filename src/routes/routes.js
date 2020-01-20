@@ -7,12 +7,12 @@ import { LoginContext } from 'contexts';
 import { Login, Register, Home, MobileMenu, FourOFour, Example, Merchant, Company, MerchantDetail, CompanyDetail, Profile } from 'views';
 import { Layout } from '../layout';
 import { LayoutConfig } from 'configurations';
-import { LoadingScreen } from 'components';
+import { LoadingAnimation } from 'components';
 
 export const AppRoutes = (props) => {
   const { loginStatus } = useContext(LoginContext);
-  let landingPage = (LayoutConfig.landingPage !== undefined ? LayoutConfig.landingPage !== '' ? LayoutConfig.landingPage : '/home' : '/home');
-  if (loginStatus === undefined) return <LoadingScreen />;
+  let landingPage = (LayoutConfig.landingPage !== undefined ? LayoutConfig.landingPage !== '' ? LayoutConfig.landingPage : '/merchant' : '/merchant');
+  if (loginStatus === undefined) return <LoadingAnimation />;
   return (
     <Switch>
       <Route exact path='/' render={() => (((!loginStatus) ? <Redirect to={{ pathname: '/login' }} {...props} /> : <Redirect to={{

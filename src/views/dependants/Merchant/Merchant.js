@@ -3,7 +3,7 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { API } from 'helpers';
 import { Grid, Typography, makeStyles, Button } from '@material-ui/core';
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Switch } from '@material-ui/core';
-import { TableWithSorting, LoadingScreen } from 'components';
+import { TableWithSorting, LoadingAnimation } from 'components';
 
 const useStyles = makeStyles(({
   card: {
@@ -95,14 +95,14 @@ export const Merchant = () => {
   return (isSelected ? (<Redirect to={{ pathname: '/merchantdetail', state: { selectedMerchant } }} />
   ) : (
     <Grid container className={classes.container} spacing={6}>
-      <Grid container className={classes.container} item xs={12} spacing={3}>
-        <Grid item xs={11}>
+      <Grid container className={classes.container} item xs={12}>
+        <Grid item xs={8}>
           <Typography variant='h4'>Merchants</Typography>
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={4} container justify="flex-end" alignItems="center">
           <Button variant='outlined' onClick={handleDialogOpen}>Add</Button>
         </Grid>
-        {merchantTableList[0] === undefined ? <LoadingScreen /> : <TableWithSorting
+        {merchantTableList[0] === undefined ? <LoadingAnimation /> : <TableWithSorting
           headerElements={headCells}
           data={merchantTableList}
           ignoreKeys={['_id']}

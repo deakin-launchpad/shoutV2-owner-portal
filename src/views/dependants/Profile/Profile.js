@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API } from 'helpers';
-import { Paper, Grid, Typography, Button, OutlinedInput, InputLabel, InputAdornment, IconButton, makeStyles, FormControl } from '@material-ui/core';
+import { Paper, Grid, Typography, Button, OutlinedInput, InputLabel, IconButton, makeStyles, FormControl } from '@material-ui/core';
 import { notify } from 'components/index';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
@@ -91,8 +91,7 @@ export const Profile = () => {
 
   return (
     <Grid container className={classes.container} spacing={6}>
-      <Grid container item xs={12} spacing={3}>
-        {/* <Grid item xs={12} className={classes.root}>
+      {/* <Grid item xs={12} className={classes.root}>
                     <Badge
                         overlap="circle"
                         anchorOrigin={{
@@ -114,77 +113,56 @@ export const Profile = () => {
                         <Avatar alt="Travis Howard" src="https://s3.au-syd.cloud-object-storage.appdomain.cloud/ipan-v2-bucket/image/profilePicture/original/Profile_XLzfhcJRFgG0.jpg" className={classes.large} />
                     </Badge>
                 </Grid> */}
-        <Grid item xs={12}>
-          <Paper>
-            <Grid container className={classes.padding} spacing={2}>
-              <Grid item xs={12} sm={12} >
-                <Typography variant='h5' gutterBottom>Change Password</Typography>
-                <Grid container justify='center'>
-                  <Grid item xs={12} sm={4}>
-                    <FormControl variant="outlined" className={classes.margin} fullWidth>
-                      <InputLabel>Old Password</InputLabel>
-                      <OutlinedInput
-                        type={showPassword ? 'text' : 'password'}
-                        onChange={(e) => setOldPassword(e.target.value)}
-                        endAdornment={
-                          <InputAdornment position="end">
-                            <IconButton
-                              onClick={handleClickShowPassword}
-                              onMouseDown={handleMouseDownPassword}
-                            >
-                              {showPassword ? <Visibility /> : <VisibilityOff />}
-                            </IconButton>
-                          </InputAdornment>
-                        }
-                        labelWidth={100}
-                      />
-                    </FormControl>
-                    <FormControl variant="outlined" className={classes.margin} fullWidth>
-                      <InputLabel>New Password</InputLabel>
-                      <OutlinedInput
-                        type={showPassword ? 'text' : 'password'}
-                        onChange={(e) => setNewPassword(e.target.value)}
-                        endAdornment={
-                          <InputAdornment position="end">
-                            <IconButton
-                              onClick={handleClickShowPassword}
-                              onMouseDown={handleMouseDownPassword}
-                            >
-                              {showPassword ? <Visibility /> : <VisibilityOff />}
-                            </IconButton>
-                          </InputAdornment>
-                        }
-                        labelWidth={110}
-                      />
-                    </FormControl>
-                    <FormControl variant="outlined" className={classes.margin} fullWidth>
-                      <InputLabel>Confirm New Password</InputLabel>
-                      <OutlinedInput
-                        type={showPassword ? 'text' : 'password'}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        endAdornment={
-                          <InputAdornment position="end">
-                            <IconButton
-                              onClick={handleClickShowPassword}
-                              onMouseDown={handleMouseDownPassword}
-                            >
-                              {showPassword ? <Visibility /> : <VisibilityOff />}
-                            </IconButton>
-                          </InputAdornment>
-                        }
-                        labelWidth={170}
-                      />
-                    </FormControl>
-                  </Grid>
-                </Grid>
-                <Grid container justify='flex-end'>
-                  <Button color='primary' variant='contained' onClick={handlePasswordChange}>Confirm</Button>
+      <Grid item xs={12}>
+        <Paper>
+          <Grid container className={classes.padding} spacing={2}>
+            <Grid item xs={12} sm={12} >
+              <Grid item xs={12}>
+                <Typography variant="h5">Change Password</Typography>
+              </Grid>
+              <Grid item xs={12} container justify="flex-end">
+                <IconButton
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </Grid>
+              <Grid container justify='center'>
+                <Grid item xs={12} sm={4}>
+                  <FormControl variant="outlined" className={classes.margin} fullWidth>
+                    <InputLabel>Old Password</InputLabel>
+                    <OutlinedInput
+                      type={showPassword ? 'text' : 'password'}
+                      onChange={(e) => setOldPassword(e.target.value)}
+                      labelWidth={100}
+                    />
+                  </FormControl>
+                  <FormControl variant="outlined" className={classes.margin} fullWidth>
+                    <InputLabel>New Password</InputLabel>
+                    <OutlinedInput
+                      type={showPassword ? 'text' : 'password'}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      labelWidth={110}
+                    />
+                  </FormControl>
+                  <FormControl variant="outlined" className={classes.margin} fullWidth>
+                    <InputLabel>Confirm New Password</InputLabel>
+                    <OutlinedInput
+                      type={showPassword ? 'text' : 'password'}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      labelWidth={170}
+                    />
+                  </FormControl>
                 </Grid>
               </Grid>
-
+              <Grid container justify='flex-end'>
+                <Button color='primary' variant='contained' onClick={handlePasswordChange}>Confirm</Button>
+              </Grid>
             </Grid>
-          </Paper>
-        </Grid>
+
+          </Grid>
+        </Paper>
       </Grid>
     </Grid>
   );

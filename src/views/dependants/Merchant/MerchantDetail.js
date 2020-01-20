@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Grid, Typography, makeStyles, Paper, Button } from '@material-ui/core';
+import { withRouter, Link } from 'react-router-dom';
+import { Grid, Typography, makeStyles, Card, CardContent, useMediaQuery, Button } from '@material-ui/core';
 import { API } from 'helpers/index';
 import { TableWithSorting } from 'components';
-import { LoadingScreen } from 'components/index';
+import { LoadingAnimation } from 'components/index';
 import Avatar from '@material-ui/core/Avatar';
 import { Map, View, Feature } from 'ol';
 import OSM from 'ol/source/OSM';
 import TileLayer from 'ol/layer/Tile';
 import VectorLayer from 'ol/layer/Vector';
 import Vector from 'ol/source/Vector';
+import {Style, Icon} from 'ol/style';
 import { fromLonLat } from 'ol/proj';
 import { Point } from 'ol/geom';
 import 'ol/ol.css';
@@ -44,8 +45,8 @@ const useStyles = makeStyles(theme => ({
     padding: '3vw'
   },
   card: {
-    padding: '20px',
-    width: 'inherit',
+    height:'100%',
+    backgroundColor:'#C8DAD2'
   },
   large: {
     width: theme.spacing(7),
@@ -71,6 +72,7 @@ const MerchantDetail = ({ ...props }) => {
   const [claimData, setClaimData] = useState([]);
   const [reload, setReload] = useState(true);
   const [claimId, setClaimId] = useState('');
+  let isItDesktop = useMediaQuery('(min-width:600px) and (min-height:600px)');
   const [isMerchantSelected] = useState(
     props.location.state.hasOwnProperty('selectedMerchant') ? true : false
   );
@@ -135,62 +137,111 @@ const MerchantDetail = ({ ...props }) => {
       let map = document.getElementById('map');
       map.innerHTML = '';
       olMap.setTarget('map');
+      let feature = new Feature({
+        geometry: new Point(fromLonLat(mapCentre)),
+      });
+      let icon = new Style({
+        image: new Icon({
+          anchor: [0.5, 1],
+          src: 'https://img.icons8.com/office/30/000000/marker.png'
+        })
+      });
+      feature.setStyle(icon);
       var layer = new VectorLayer({
         source: new Vector({
-          features: [
-            new Feature({
-              geometry: new Point(fromLonLat(mapCentre))
-            })
-          ]
+          features:[feature]
         })
       });
       olMap.addLayer(layer);
     }
   }, [mapCentre, merchantDetails, olMap]);
 
-
   return (
     <Grid container className={classes.container}>
       {(isLoad && merchantDetails ? <Grid container spacing={3}>
-        <Grid item xs={1} sm={1}>
-          <Avatar alt={merchantDetails.storeName ? merchantDetails.storeName : 'Merchant not registered'} src={merchantDetails.profilePicture ? merchantDetails.profilePicture.thumbnail : 'Merchant not registered'} className={classes.large} />
+        <Grid item container spacing={1}>
+          <Grid item xs={2} sm={1}>
+            <Avatar alt={merchantDetails.storeName ? merchantDetails.storeName : 'Merchant not registered'} src={merchantDetails.profilePicture ? merchantDetails.profilePicture.thumbnail : 'Merchant not registered'} className={classes.large} />
+          </Grid>
+          <Grid item xs={8} sm={9} container alignItems="center">
+            <Typography variant='h4' align='left'>{merchantDetails.storeName ? merchantDetails.storeName : 'Merchant not registered'}</Typography>
+          </Grid>
+          <Grid item xs={2} sm={2} container justify="flex-end" alignItems="center">
+            <Button component={Link} to="/merchant" color='primary' variant="contained">Back</Button>
+          </Grid>
         </Grid>
-        <Grid item xs={7} sm={9}>
-          <Typography variant='h4' gutterBottom>{merchantDetails.storeName ? merchantDetails.storeName : 'Merchant not registered'}</Typography>
+        <Grid item xs={12}>
+          <Typography variant="h5" component="h2" gutterBottom>Total Summary</Typography>
+          <Grid container item  spacing={isItDesktop?3:1} xs={12}>
+            <Grid item xs={3} >
+              <Card className={classes.card}>
+                <CardContent style={{paddingLeft:isItDesktop?'3vw':'1vw',paddingRight:isItDesktop?'3vw':'1vw'}}>
+                  <Typography align='left' color="textSecondary" gutterBottom variant={isItDesktop?'body1':'caption'}>
+                  Total order
+                  </Typography>
+                  <Typography align='center' variant="h5" component="h2">
+                    {merchantDetails.orders}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3} >
+              <Card className={classes.card}>
+                <CardContent style={{paddingLeft:isItDesktop?'3vw':'1vw',paddingRight:isItDesktop?'3vw':'1vw'}}>
+                  <Typography align='left' color="textSecondary" gutterBottom variant={isItDesktop?'body1':'caption'} noWrap>
+                  Total customer
+                  </Typography>
+                  <Typography align='center' variant="h5" component="h2">
+                    {merchantDetails.customers}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3} >
+              <Card className={classes.card}>
+                <CardContent style={{paddingLeft:isItDesktop?'3vw':'1vw',paddingRight:isItDesktop?'3vw':'1vw'}}>
+                  <Typography align='left' color="textSecondary" gutterBottom variant={isItDesktop?'body1':'caption'}>
+                  Total earning
+                  </Typography>
+                  <Typography align='center' variant="h5" component="h2">
+                    {merchantDetails.earning}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3} >
+              <Card className={classes.card}>
+                <CardContent style={{paddingLeft:isItDesktop?'3vw':'1vw',paddingRight:isItDesktop?'3vw':'1vw'}}>
+                  <Typography align='left' color="textSecondary" gutterBottom variant={isItDesktop?'body1':'caption'}>
+                  Total paid
+                  </Typography>
+                  <Typography align='center' variant="h5" component="h2">
+                    {merchantDetails.paid}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={3} sm={3} lg={3}>
-          <Paper className={classes.card}>
-                        Orders: {merchantDetails.orders}
-          </Paper>
-        </Grid>
-        <Grid item xs={3} sm={3} lg={3}>
-          <Paper className={classes.card}>
-                        Customers: {merchantDetails.customers}
-          </Paper>
-        </Grid>
-        <Grid item xs={3} sm={3} lg={3}>
-          <Paper className={classes.card}>
-                        Earning: {merchantDetails.earning} cr
-          </Paper>
-        </Grid>
-        <Grid item xs={3} sm={3} lg={3}>
-          <Paper className={classes.card}>
-                        Paid: ${merchantDetails.paid}
-          </Paper>
-        </Grid>
-        <Grid item xs={8} sm={10}>
-          {merchantDetails.location && <Typography variant='h6' gutterBottom>Location: </Typography>}
-        </Grid>
-        <Grid item xs={12} className={classes.map}>
-          <div id='map' style={{ width: 'inherit', height: '30vh' }}></div>
-        </Grid>
-        {claimData[0] && <TableWithSorting
-          headerElements={headCells}
-          data={claimData}
-          ignoreKeys={['_id']}
-          tableTitle={'Claim List'}
-          actionColor={'primary'}
-        />}
+        {merchantDetails.location && 
+        <Grid item xs={12}>
+          <Grid item xs={8} sm={10}>
+            <Typography variant="h5" component="h2" gutterBottom>Location: </Typography>
+          </Grid>
+          <Grid item xs={12} className={classes.map}>
+            <div id='map' style={{ width: 'inherit', height: '30vh' }}></div>
+          </Grid>
+        </Grid>}
+        {claimData[0] && 
+        <Grid item xs={12}>
+          <TableWithSorting
+            headerElements={headCells}
+            data={claimData}
+            ignoreKeys={['_id']}
+            tableTitle={'Claim List'}
+            actionColor={'primary'}
+          />
+        </Grid>}
         <Dialog
           open={open}
           TransitionComponent={Transition}
@@ -214,7 +265,7 @@ const MerchantDetail = ({ ...props }) => {
             </Button>
           </DialogActions>
         </Dialog>
-      </Grid> : <LoadingScreen></LoadingScreen>)}
+      </Grid> : <LoadingAnimation />)}
     </Grid>
   );
 
