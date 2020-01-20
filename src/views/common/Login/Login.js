@@ -2,7 +2,7 @@
  *  Created by Sanchit Dang
  ***/
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { TextField, Paper, makeStyles, Typography, Button, Box, Grid } from '@material-ui/core';
 import { LoginContext } from 'contexts';
 import { notify } from 'components';
@@ -100,7 +100,7 @@ export const Login = () => {
     <div>
       <Grid container spacing={0} justify="center">
         <Grid className={classes.loginBox} item xs={10} sm={6} md={4} lg={3} xl={2}>
-          <Typography variant='h3' color='primary' align='center'>ShoutV2 Owner</Typography>
+          <Typography variant='h4' color='primary' align='center'>ShoutV2 Owner</Typography>
           <Paper className={classes.paper}>
             <Typography component="h1" variant="h5">
               {pageHeading}
@@ -109,7 +109,7 @@ export const Login = () => {
               <TextField variant="outlined" margin="normal" required fullWidth id="email" label="Email Address" name="email" autoComplete="email" onChange={e => setEmailId(e.target.value)} autoFocus />
               <TextField variant="outlined" margin="normal" required fullWidth name="password" label="Password" type="password" id="password" onChange={e => setPassword(e.target.value)} autoComplete="current-password" />
               <Button fullWidth variant="contained" color="primary" className={classes.buttons} onClick={validationCheck}>Login</Button>
-              <Button fullWidth variant="contained" color="primary" className={classes.buttons} component={Link} to='/register'>Sign Up</Button>
+              {/* <Button fullWidth variant="contained" color="primary" className={classes.buttons} component={Link} to='/register'>Sign Up</Button> */}
             </form>
           </Paper>
         </Grid>

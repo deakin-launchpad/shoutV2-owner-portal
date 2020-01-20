@@ -10,6 +10,7 @@ import OSM from 'ol/source/OSM';
 import TileLayer from 'ol/layer/Tile';
 import VectorLayer from 'ol/layer/Vector';
 import Vector from 'ol/source/Vector';
+import {Style, Icon} from 'ol/style';
 import { fromLonLat } from 'ol/proj';
 import { Point } from 'ol/geom';
 import 'ol/ol.css';
@@ -136,13 +137,19 @@ const MerchantDetail = ({ ...props }) => {
       let map = document.getElementById('map');
       map.innerHTML = '';
       olMap.setTarget('map');
+      let feature = new Feature({
+        geometry: new Point(fromLonLat(mapCentre)),
+      });
+      let icon = new Style({
+        image: new Icon({
+          anchor: [0.5, 1],
+          src: 'https://img.icons8.com/office/30/000000/marker.png'
+        })
+      });
+      feature.setStyle(icon);
       var layer = new VectorLayer({
         source: new Vector({
-          features: [
-            new Feature({
-              geometry: new Point(fromLonLat(mapCentre))
-            })
-          ]
+          features:[feature]
         })
       });
       olMap.addLayer(layer);
