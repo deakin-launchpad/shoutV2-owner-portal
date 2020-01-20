@@ -50,7 +50,7 @@ const performCallback = (callback, data) => {
 
 class API {
   displayAccessToken = () => {
-    console.log(AccessToken)
+    // console.log(AccessToken)
   }
 
   accessTokenLogin = (callback) => {
@@ -63,7 +63,6 @@ class API {
 
   login = (data, callback) => {
     axiosInstance.post('/admin/login', data).then(response => {
-      console.log(response.data.data);
       return callback(response.data.data)
     }).catch(error => {
       errorHelper(error, "login")
@@ -90,7 +89,6 @@ class API {
         authorization: 'Bearer ' + AccessToken
       }
     }).then(response => {
-      console.log(response)
       return callback(true)
     }).catch(error => {
       return callback(false)
@@ -103,7 +101,6 @@ class API {
         authorization: 'Bearer ' + AccessToken
       }
     }).then(response => {
-      console.log(response.data.data.data)
       return callback(response.data.data.data)
     }).catch(error => {
       errorHelper(error)
@@ -116,7 +113,6 @@ class API {
         authorization: 'Bearer ' + AccessToken
       }
     }).then(response => {
-      console.log(response)
       return callback(response)
     }).catch(error => {
       errorHelper(error)
@@ -129,7 +125,6 @@ class API {
         authorization: 'Bearer ' + AccessToken
       }
     }).then(response => {
-      console.log(response)
       return callback(response)
     }).catch(error => {
       errorHelper(error)
@@ -154,7 +149,6 @@ class API {
         authorization: 'Bearer ' + AccessToken
       }
     }).then(response => {
-      console.log(response.data.data)
       return callback(response.data.data.companyDetails)
     }).catch(error => {
       errorHelper(error)
@@ -167,7 +161,6 @@ class API {
         authorization: 'Bearer ' + AccessToken
       }
     }).then(response => {
-      console.log(response.data.data.adminDetails)
       return callback(response.data.data.adminDetails)
     }).catch(error => {
       errorHelper(error)
@@ -180,7 +173,6 @@ class API {
         authorization: 'Bearer ' + AccessToken
       }
     }).then(response => {
-      console.log(response)
       return callback(response.data.data.userDetails)
     }).catch(error => {
       errorHelper(error)
@@ -193,7 +185,6 @@ class API {
         authorization: 'Bearer ' + AccessToken
       }
     }).then(response => {
-      console.log(response)
       return callback(response.data.data.data)
     }).catch(error => {
       errorHelper(error)
@@ -206,7 +197,6 @@ class API {
         authorization: 'Bearer ' + AccessToken
       }
     }).then(response => {
-      console.log(response)
       return callback(Math.random)
     }).catch(error => {
       errorHelper(error)
@@ -219,7 +209,6 @@ class API {
         authorization: 'Bearer ' + AccessToken
       }
     }).then(response => {
-      console.log(response)
       return callback(Math.random)
     }).catch(error => {
       errorHelper(error)
@@ -248,7 +237,6 @@ class API {
       }
     }).then(response => {
       notify("Image Uploaded")
-      console.log(response.data.data.imageFileURL)
       return callback(response.data.data.imageFileURL)
     }).catch(error => {
       errorHelper(error)
@@ -261,7 +249,6 @@ class API {
         authorization: 'Bearer ' + AccessToken
       }
     }).then(response => {
-      console.log("claims!!!!!!!", response.data.data.data)
       return callback(response.data.data.data)
     }).catch(error => {
       errorHelper(error)

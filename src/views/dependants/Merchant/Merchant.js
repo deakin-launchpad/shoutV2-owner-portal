@@ -40,11 +40,8 @@ export const Merchant = () => {
   const [merchantTableList, setMerchantTableList] = useState([]);
 
   const showDetails = (data) => {
-    console.log(data);
     setIsSelected(true);
     setSelectedMerchant(data);
-    // API.merchantDetails({ merchantId: data }, responseHandler);
-
   };
 
   useEffect(() => {
