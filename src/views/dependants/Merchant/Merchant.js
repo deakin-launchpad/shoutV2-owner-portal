@@ -3,7 +3,7 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { API } from 'helpers';
 import { Grid, Typography, makeStyles, Button } from '@material-ui/core';
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Switch } from '@material-ui/core';
-import { TableWithSorting, LoadingAnimation } from 'components';
+import { TableWithSorting, LoadingAnimation, notify } from 'components';
 
 const useStyles = makeStyles(({
   card: {
@@ -38,6 +38,7 @@ export const Merchant = () => {
   const [callback, setCallback] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [merchantTableList, setMerchantTableList] = useState([]);
+
 
   const showDetails = (data) => {
     setIsSelected(true);
@@ -79,15 +80,24 @@ export const Merchant = () => {
     setIsDialogOpen(true);
   };
   const handleSubmit = () => {
-    //validation
-    API.createMerchant({ emailId: emailId, fullName: fullName }, setCallback);
-    handleDialogClose();
-    //reset data
-    setEmailId('');
-    setFullName('');
+    //validation  
+    let emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (emailId !== '' && fullName !== '') {
+      let emailPatternTest = emailPattern.test(emailId);
+      if (!emailPatternTest) {
+        notify('Invalid Email address!');
+      } else {
+        API.createMerchant({ emailId: emailId, fullName: fullName }, setCallback);
+        notify('New merchant created!');
+        handleDialogClose();
+      }
+    }
+    else notify('Please fill the form!');
   };
   const handleDialogClose = () => {
     setIsDialogOpen(false);
+    setEmailId('');
+    setFullName('');
   };
   return (isSelected ? (<Redirect to={{ pathname: '/merchantdetail', state: { selectedMerchant } }} />
   ) : (
@@ -132,10 +142,10 @@ export const Merchant = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleDialogClose}>
-                            Cancel
+              Cancel
           </Button>
           <Button onClick={handleSubmit}>
-                            Submit
+              Submit
           </Button>
         </DialogActions>
       </Dialog>

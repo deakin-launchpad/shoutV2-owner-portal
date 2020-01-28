@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
 import { Grid, Typography, makeStyles, Paper, Dialog, Avatar, TextField, DialogContent, DialogActions, Button, DialogTitle, Icon } from '@material-ui/core';
 import { API } from 'helpers/index';
-import { LoadingAnimation } from 'components/index';
+import { LoadingAnimation, notify } from 'components/index';
 // import { element, elementType } from 'prop-types';
 
 const useStyles = makeStyles(theme=>({
@@ -46,15 +46,25 @@ const Company = () => {
     setIsDialogOpen(true);
   };
   const handleSubmit = () => {
+    let emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     //validation
-    API.createSuperAdmin({ emailId: emailId, fullName: fullName }, reload);
-    handleDialogClose();
-    //reset data
-    setEmailId('');
-    setFullName('');
+    if (emailId !== '' && fullName !== '') {
+      let emailPatternTest = emailPattern.test(emailId);
+      if (!emailPatternTest) {
+        notify('Invalid Email address!');
+      } else {
+        API.createSuperAdmin({ emailId: emailId, fullName: fullName }, reload);
+        notify('New merchant created!');
+        handleDialogClose();
+      }
+    }
+    else notify('Please fill the form!');
   };
   const handleDialogClose = () => {
     setIsDialogOpen(false);
+    //reset data
+    setEmailId('');
+    setFullName('');
   };
 
   const reload = () => {
