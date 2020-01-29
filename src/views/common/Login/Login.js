@@ -58,7 +58,7 @@ export const Login = () => {
         setAccessToken(data.accessToken);
       }
       let details = {
-        emailId: (devMode ? (DevModeConfig.devDetails !== undefined ? DevModeConfig.devDetails.user : '') : emailId),
+        emailId: (devMode ? (DevModeConfig.devDetails !== undefined ? DevModeConfig.devDetails.user : '') : emailId.toLowerCase()),
         password: (devMode ? (DevModeConfig.devDetails !== undefined ? DevModeConfig.devDetails.password : '') : password)
       };
       API.login(details, responseHandler);

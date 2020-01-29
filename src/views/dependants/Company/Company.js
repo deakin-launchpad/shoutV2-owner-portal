@@ -53,7 +53,7 @@ const Company = () => {
       if (!emailPatternTest) {
         notify('Invalid Email address!');
       } else {
-        API.createSuperAdmin({ emailId: emailId, fullName: fullName }, reload);
+        API.createSuperAdmin({ emailId: emailId.toLowerCase(), fullName: fullName }, reload);
         notify('New merchant created!');
         handleDialogClose();
       }

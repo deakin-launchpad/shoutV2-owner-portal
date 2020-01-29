@@ -87,7 +87,7 @@ export const Merchant = () => {
       if (!emailPatternTest) {
         notify('Invalid Email address!');
       } else {
-        API.createMerchant({ emailId: emailId, fullName: fullName }, setCallback);
+        API.createMerchant({ emailId: emailId.toLowerCase(), fullName: fullName }, setCallback);
         notify('New merchant created!');
         handleDialogClose();
       }
