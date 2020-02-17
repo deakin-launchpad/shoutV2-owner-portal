@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles, useMediaQuery, createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import { Header, BottomNavToolbar } from 'components';
 import { LayoutConfig } from 'configurations';
+import { Footer } from 'components/dependants/Footer';
 
 const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 const useStyles = makeStyles(theme => ({
@@ -53,6 +54,8 @@ export const Layout = (props) => {
           {props.children}
           <div className={isItDesktop ? null : LayoutConfig.bottomMobileNavigation ? classes.appBarSpacer : null} />
           <div className={classes.iOSPadding} />
+          
+          <Footer />
         </main>
         {isItDesktop ? null : LayoutConfig.bottomMobileNavigation ? <BottomNavToolbar /> : null}
       </div>

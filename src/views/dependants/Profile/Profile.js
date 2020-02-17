@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API } from 'helpers';
-import { Paper, Grid, Typography, Button, OutlinedInput, InputLabel, IconButton, makeStyles, FormControl } from '@material-ui/core';
+import { Paper, Grid, Typography, Button, OutlinedInput, InputLabel, IconButton, makeStyles, FormControl, useMediaQuery } from '@material-ui/core';
 import { notify } from 'components/index';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row-reverse'
   },
   container: {
-    padding: '3vw'
+    padding: '1.5vw 1vw'
   },
   padding: {
     padding: 10
@@ -59,6 +59,7 @@ export const Profile = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [callback, setCallback] = useState();
+  const isItDesktop = useMediaQuery('(min-width:600px) and (min-height:600px)');
 
   useEffect(() => {
   }, []);
@@ -90,7 +91,7 @@ export const Profile = () => {
   // }
 
   return (
-    <Grid container className={classes.container} spacing={6}>
+    <Grid container className={classes.container} justify="center">
       {/* <Grid item xs={12} className={classes.root}>
                     <Badge
                         overlap="circle"
@@ -113,7 +114,7 @@ export const Profile = () => {
                         <Avatar alt="Travis Howard" src="https://s3.au-syd.cloud-object-storage.appdomain.cloud/ipan-v2-bucket/image/profilePicture/original/Profile_XLzfhcJRFgG0.jpg" className={classes.large} />
                     </Badge>
                 </Grid> */}
-      <Grid item xs={12}>
+      <Grid item xs={isItDesktop? 10 : 12}>
         <Paper>
           <Grid container className={classes.padding} spacing={2}>
             <Grid item xs={12} sm={12} >

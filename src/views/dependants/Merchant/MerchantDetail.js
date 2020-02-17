@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(1),
   },
   container: {
-    padding: '3vw'
+    padding: '1.5vw .5vw'
   },
   card: {
     height:'100%',
@@ -158,113 +158,115 @@ const MerchantDetail = ({ ...props }) => {
 
   return (
     <Grid container className={classes.container}>
-      {(isLoad && merchantDetails ? <Grid container spacing={3}>
-        <Grid item container spacing={1}>
-          <Grid item xs={2} sm={1}>
-            <Avatar alt={merchantDetails.storeName ? merchantDetails.storeName : 'Merchant not registered'} src={merchantDetails.profilePicture ? merchantDetails.profilePicture.thumbnail : 'Merchant not registered'} className={classes.large} />
-          </Grid>
-          <Grid item xs={8} sm={9} container alignItems="center">
-            <Typography variant='h4' align='left'>{merchantDetails.storeName ? merchantDetails.storeName : 'Merchant not registered'}</Typography>
-          </Grid>
-          <Grid item xs={2} sm={2} container justify="flex-end" alignItems="center">
-            <Button component={Link} to="/merchant" color='primary' variant="contained">Back</Button>
-          </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h5" component="h2" gutterBottom>Total Summary</Typography>
-          <Grid container item  spacing={isItDesktop?3:1} xs={12}>
-            <Grid item xs={3} >
-              <Card className={classes.card}>
-                <CardContent style={{paddingLeft:isItDesktop?'3vw':'1vw',paddingRight:isItDesktop?'3vw':'1vw'}}>
-                  <Typography align='left' color="textSecondary" gutterBottom variant={isItDesktop?'body1':'caption'}>
-                  Total order
-                  </Typography>
-                  <Typography align='center' variant="h5" component="h2">
-                    {merchantDetails.orders}
-                  </Typography>
-                </CardContent>
-              </Card>
+      {(isLoad && merchantDetails ? <Grid container justify="center" className={classes.container}>
+        <Grid container item xs={isItDesktop ? 10 : 12}>
+          <Grid item container spacing={1}>
+            <Grid item xs={2} sm={1}>
+              <Avatar alt={merchantDetails.storeName ? merchantDetails.storeName : 'Merchant not registered'} src={merchantDetails.profilePicture ? merchantDetails.profilePicture.thumbnail : 'Merchant not registered'} className={classes.large} />
             </Grid>
-            <Grid item xs={3} >
-              <Card className={classes.card}>
-                <CardContent style={{paddingLeft:isItDesktop?'3vw':'1vw',paddingRight:isItDesktop?'3vw':'1vw'}}>
-                  <Typography align='left' color="textSecondary" gutterBottom variant={isItDesktop?'body1':'caption'} noWrap>
-                  Total customer
-                  </Typography>
-                  <Typography align='center' variant="h5" component="h2">
-                    {merchantDetails.customers}
-                  </Typography>
-                </CardContent>
-              </Card>
+            <Grid item xs={8} sm={9} container alignItems="center">
+              <Typography variant='h4' align='left'>{merchantDetails.storeName ? merchantDetails.storeName : 'Merchant not registered'}</Typography>
             </Grid>
-            <Grid item xs={3} >
-              <Card className={classes.card}>
-                <CardContent style={{paddingLeft:isItDesktop?'3vw':'1vw',paddingRight:isItDesktop?'3vw':'1vw'}}>
-                  <Typography align='left' color="textSecondary" gutterBottom variant={isItDesktop?'body1':'caption'}>
-                  Total earning
-                  </Typography>
-                  <Typography align='center' variant="h5" component="h2">
-                    {merchantDetails.earning}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={3} >
-              <Card className={classes.card}>
-                <CardContent style={{paddingLeft:isItDesktop?'3vw':'1vw',paddingRight:isItDesktop?'3vw':'1vw'}}>
-                  <Typography align='left' color="textSecondary" gutterBottom variant={isItDesktop?'body1':'caption'}>
-                  Total paid
-                  </Typography>
-                  <Typography align='center' variant="h5" component="h2">
-                    {merchantDetails.paid}
-                  </Typography>
-                </CardContent>
-              </Card>
+            <Grid item xs={2} sm={2} container justify="flex-end" alignItems="center">
+              <Button component={Link} to="/merchant" color='primary' variant="contained">Back</Button>
             </Grid>
           </Grid>
-        </Grid>
-        {merchantDetails.location && 
-        <Grid item xs={12}>
-          <Grid item xs={8} sm={10}>
-            <Typography variant="h5" component="h2" gutterBottom>Location: </Typography>
+          <Grid item xs={12}>
+            <Typography variant="h5" component="h2" gutterBottom>Total Summary</Typography>
+            <Grid container item spacing={isItDesktop ? 3 : 1} xs={12}>
+              <Grid item xs={3} >
+                <Card className={classes.card}>
+                  <CardContent style={{ paddingLeft: isItDesktop ? '3vw' : '1vw', paddingRight: isItDesktop ? '3vw' : '1vw' }}>
+                    <Typography align='left' color="textSecondary" gutterBottom variant={isItDesktop ? 'body1' : 'caption'}>
+                      Total order
+                  </Typography>
+                    <Typography align='center' variant="h5" component="h2">
+                      {merchantDetails.orders}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={3} >
+                <Card className={classes.card}>
+                  <CardContent style={{ paddingLeft: isItDesktop ? '3vw' : '1vw', paddingRight: isItDesktop ? '3vw' : '1vw' }}>
+                    <Typography align='left' color="textSecondary" gutterBottom variant={isItDesktop ? 'body1' : 'caption'} noWrap>
+                      Total customer
+                  </Typography>
+                    <Typography align='center' variant="h5" component="h2">
+                      {merchantDetails.customers}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={3} >
+                <Card className={classes.card}>
+                  <CardContent style={{ paddingLeft: isItDesktop ? '3vw' : '1vw', paddingRight: isItDesktop ? '3vw' : '1vw' }}>
+                    <Typography align='left' color="textSecondary" gutterBottom variant={isItDesktop ? 'body1' : 'caption'}>
+                      Total earning
+                  </Typography>
+                    <Typography align='center' variant="h5" component="h2">
+                      {merchantDetails.earning}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={3} >
+                <Card className={classes.card}>
+                  <CardContent style={{ paddingLeft: isItDesktop ? '3vw' : '1vw', paddingRight: isItDesktop ? '3vw' : '1vw' }}>
+                    <Typography align='left' color="textSecondary" gutterBottom variant={isItDesktop ? 'body1' : 'caption'}>
+                      Total paid
+                  </Typography>
+                    <Typography align='center' variant="h5" component="h2">
+                      {merchantDetails.paid}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item xs={12} className={classes.map}>
-            <div id='map' style={{ width: 'inherit', height: '30vh' }}></div>
-          </Grid>
-        </Grid>}
-        {claimData[0] && 
-        <Grid item xs={12}>
-          <TableWithSorting
-            headerElements={headCells}
-            data={claimData}
-            ignoreKeys={['_id']}
-            tableTitle={'Claim List'}
-            actionColor={'primary'}
-          />
-        </Grid>}
-        <Dialog
-          open={open}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={handleClose}
-          aria-labelledby='alert-dialog-slide-title'
-          aria-describedby='alert-dialog-slide-description'
-        >
-          <DialogTitle id='alert-dialog-slide-title'>{'Confirm claim'}</DialogTitle>
-          <DialogContent>
-            <DialogContentText id='alert-dialog-slide-description'>
-                            By clicking agree, you approve the transaction.
+          {merchantDetails.location &&
+            <Grid item xs={12}>
+              <Grid item xs={8} sm={10}>
+                <Typography variant="h5" component="h2" gutterBottom>Location: </Typography>
+              </Grid>
+              <Grid item xs={12} className={classes.map}>
+                <div id='map' style={{ width: 'inherit', height: '30vh' }}></div>
+              </Grid>
+            </Grid>}
+          {claimData[0] &&
+            <Grid item xs={12}>
+              <TableWithSorting
+                headerElements={headCells}
+                data={claimData}
+                ignoreKeys={['_id']}
+                tableTitle={'Claim List'}
+                actionColor={'primary'}
+              />
+            </Grid>}
+          <Dialog
+            open={open}
+            TransitionComponent={Transition}
+            keepMounted
+            onClose={handleClose}
+            aria-labelledby='alert-dialog-slide-title'
+            aria-describedby='alert-dialog-slide-description'
+          >
+            <DialogTitle id='alert-dialog-slide-title'>{'Confirm claim'}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id='alert-dialog-slide-description'>
+                By clicking agree, you approve the transaction.
             </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color='primary'>
-                            Disagree
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color='primary'>
+                Disagree
             </Button>
-            <Button onClick={handleClaim} color='primary'>
-                            Agree
+              <Button onClick={handleClaim} color='primary'>
+                Agree
             </Button>
-          </DialogActions>
-        </Dialog>
+            </DialogActions>
+          </Dialog>
+        </Grid>
       </Grid> : <LoadingAnimation />)}
     </Grid>
   );

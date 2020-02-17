@@ -45,7 +45,8 @@
   "menuButtonLabel": "Menu",
   "sideMenu": {
     "permanent": false,
-    "default": "open"
+    "default": "open",
+    "collapseAll": true
   },
   "theme": {
     "colors": {
