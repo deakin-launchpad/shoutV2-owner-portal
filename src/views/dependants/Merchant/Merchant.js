@@ -11,7 +11,7 @@ const useStyles = makeStyles(({
     width: 'inherit',
   },
   container: {
-    padding: '1.5vw 1vw'
+    padding: '1.5vw'
   },
   map: {
     maxHeight: 500,

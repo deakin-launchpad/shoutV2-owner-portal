@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(1),
   },
   container: {
-    padding: '1.5vw 1vw'
+    padding: '1.5vw'
   },card: {
     padding:theme.spacing(2),
     height:'100%',

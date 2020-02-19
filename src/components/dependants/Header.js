@@ -116,7 +116,7 @@ export const Header = () => {
               {
                 headerElements !== null ? headerElements :
                   <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                    {pageTitle}
+                    <img src="/logo_white.svg" alt="Logo" style={{width: '100px', marginTop: '10px'}} />
                   </Typography>
               }
             </Grid>

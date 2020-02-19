@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme=>({
     width: 'inherit'
   },
   container: {
-    padding: '1.5vw 1vw'
+    padding: '1.5vw'
   },
   large: {
     width: theme.spacing(10),

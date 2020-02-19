@@ -72,13 +72,15 @@ export const Footer = () => {
 
       <Grid container
         direction="row"
-        justify="center" className={classes.root}>
+        justify="center" className={classes.root}
+        style={isItDesktop? {paddingTop: 0}: {marginBottom: '48px'}}
+      >
         <Grid item sm={8} xs={12}>
-          <h1>Logo</h1>
+          <img src="/logo_white.svg" alt="Logo" style={{width: '100px'}} />
         </Grid>
         <Grid item sm={2} xs={12} className={classes.linkContainer}>
-          <Link href="#" className={isItDesktop ? classes.link : classes.linkMobile}>Help</Link>
-          <Link href="#" className={isItDesktop ? classes.link : classes.linkMobile}>Legal</Link>
+          <Link href="/help" className={isItDesktop ? classes.link : classes.linkMobile}>Help</Link>
+          <Link href="/legal" className={isItDesktop ? classes.link : classes.linkMobile}>Legal</Link>
         </Grid>
       </Grid>
     </footer>
