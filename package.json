@@ -12,7 +12,7 @@
     "date-fns": "^2.0.0-beta.5",
     "eslint-utils": "^1.4.2",
     "idb": "^4.0.5",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "lodash.template": "^4.5.0",
     "material-design-icons-updated": "^4.8.2",
     "moment": "^2.24.0",
