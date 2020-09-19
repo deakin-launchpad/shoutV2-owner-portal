@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
 import { API } from 'helpers';
-import { Grid, Typography, makeStyles, Button, useMediaQuery } from '@material-ui/core';
-import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Switch } from '@material-ui/core';
+import { Grid, Typography, makeStyles, Button, useMediaQuery, Snackbar } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Switch, IconButton } from '@material-ui/core';
 import { TableWithSorting, LoadingAnimation, notify } from 'components';
-
+import CloseIcon from '@material-ui/icons/Close';
 const useStyles = makeStyles(({
   card: {
     padding: '20px',
@@ -42,6 +42,8 @@ export const Merchant = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [merchantTableList, setMerchantTableList] = useState([]);
   const isItDesktop = useMediaQuery('(min-width:600px) and (min-height:600px)');
+  const [loading, setLoading] = useState({ state: false, message: '' });
+
 
   const showDetails = (data) => {
     setIsSelected(true);
@@ -64,7 +66,7 @@ export const Merchant = () => {
         emailId: element.emailId,
         isBlocked: <Switch
           checked={element.isBlocked}
-          onChange={() => handleChange(element._id, element.isBlocked)}
+          onChange={() => { setLoading({ state: true, message: element.isBlocked ? 'Unblocking User' : 'Blocking User' }); handleChange(element._id, element.isBlocked); }}
           value={element.isBlocked}
           inputProps={{ 'aria-label': 'secondary checkbox' }}
         />,
@@ -104,7 +106,7 @@ export const Merchant = () => {
   };
   return (isSelected ? (<Redirect to={{ pathname: '/merchantdetail', state: { selectedMerchant } }} />
   ) : (
-    <Grid container justify="center" className={isItDesktop? '' : classes.mobileContainer}>
+    <Grid container justify="center" className={isItDesktop ? '' : classes.mobileContainer}>
       <Grid container item xs={isItDesktop ? 10 : 12} className={classes.container}>
         <Grid container item xs={12}>
           <Grid item xs={8}>
@@ -113,13 +115,13 @@ export const Merchant = () => {
           <Grid item xs={4} container justify="flex-end" alignItems="center">
             <Button variant='outlined' onClick={handleDialogOpen}>Add</Button>
           </Grid>
-          {merchantTableList[0] === undefined ? <LoadingAnimation /> : <TableWithSorting
+          {merchantTableList !== undefined && merchantTableList && merchantTableList !== null ? <TableWithSorting
             headerElements={headCells}
             data={merchantTableList}
             ignoreKeys={['_id']}
             tableTitle={'Merchant List'}
             actionColor={'primary'}
-          />}
+          /> : <LoadingAnimation />}
         </Grid>
         <Dialog fullWidth maxWidth='md' open={isDialogOpen} onClose={handleDialogClose}>
           <DialogTitle>Create New Merchant</DialogTitle>
@@ -146,14 +148,35 @@ export const Merchant = () => {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleDialogClose}>
-              Cancel
-        </Button>
+                Cancel
+            </Button>
             <Button onClick={handleSubmit}>
-              Submit
-        </Button>
+                Submit
+            </Button>
           </DialogActions>
         </Dialog>
       </Grid>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        open={loading.state}
+        color='primary'
+        onClose={() => setLoading({ state: false, message: '' })}
+        message={loading.message}
+        autoHideDuration={2000}
+        key={'bottom-right'}
+        action={
+          <React.Fragment>
+            <IconButton
+              aria-label="close"
+              color="secondary"
+              className={classes.close}
+              onClick={() => setLoading({ state: false, message: '' })}
+            >
+              <CloseIcon />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
     </Grid>)
   );
 };

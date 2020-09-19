@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { Grid, Typography, makeStyles, Avatar, Paper, Switch, Button, useMediaQuery } from '@material-ui/core';
+import { Grid, Typography, makeStyles, Avatar, Paper, Switch, Button, useMediaQuery, Snackbar, IconButton } from '@material-ui/core';
 import { API } from 'helpers/index';
 import { TableWithSorting, LoadingAnimation } from 'components/index';
 import PropTypes from 'prop-types';
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,16 +18,16 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     padding: '1.5vw'
-  },card: {
-    padding:theme.spacing(2),
-    height:'100%',
-    backgroundColor:'#C8DAD2'
+  }, card: {
+    padding: theme.spacing(2),
+    height: '100%',
+    backgroundColor: '#C8DAD2'
   },
   large: {
     width: theme.spacing(7),
     height: theme.spacing(7),
   },
-  mobileContainer : {
+  mobileContainer: {
     display: 'block'
   }
 }));
@@ -47,6 +48,7 @@ const CompanyDetail = ({ ...props }) => {
   const [reload, setReload] = useState(Math.random);
   const classes = useStyles();
   const [selectedCompany] = useState(props.location.state.selectedCompany);
+  const [loading, setLoading] = useState({state: false, message: ''});
   const [isCompanySelected] = useState(
     props.location.state.hasOwnProperty('selectedCompany') ? true : false
   );
@@ -65,7 +67,7 @@ const CompanyDetail = ({ ...props }) => {
         emailId: element.adminId.emailId,
         isBlocked: <Switch
           checked={element.adminId.isBlocked}
-          onChange={() => handleAdminChange(element.adminId._id, element.adminId.isBlocked)}
+          onChange={() => {setLoading({state: true, message: element.isBlocked ? 'Unblocking User' : 'Blocking User'}); handleAdminChange(element.adminId._id, element.adminId.isBlocked);}}
           value={element.adminId.isBlocked}
           inputProps={{ 'aria-label': 'secondary checkbox' }}
         />
@@ -86,7 +88,7 @@ const CompanyDetail = ({ ...props }) => {
         emailId: element.userId.emailId,
         isBlocked: <Switch
           checked={element.userId.isBlocked}
-          onChange={() => handleUserChange(element.userId._id, element.userId.isBlocked)}
+          onChange={() => {setLoading({state: true, message: element.isBlocked ? 'Unblocking User' : 'Blocking User'}); handleUserChange(element.userId._id, element.userId.isBlocked);}}
           value={element.userId.isBlocked}
           inputProps={{ 'aria-label': 'secondary checkbox' }}
         />
@@ -125,10 +127,10 @@ const CompanyDetail = ({ ...props }) => {
           </Grid>
           <Grid container item spacing={2}>
             <Grid item xs={7} sm={9}>
-              <Typography variant='h4'>{selectedCompany.values.length !== 0 ? 'Values' : null}</Typography>
+              <Typography variant='h4'> Values </Typography>
             </Grid>
             {selectedCompany.values && selectedCompany.values.map((element, i) => (
-              <Grid item xs={6} sm={4} lg={2} key={i}>
+              <Grid item xs={6} sm={4} lg={4}  key={i}>
                 <Paper className={classes.card}>
                   <Typography variant='h6' gutterBottom align='center'>{element.name}</Typography>
                   <Typography variant='caption' display='block' align='center'>{element.description}</Typography>
@@ -157,6 +159,27 @@ const CompanyDetail = ({ ...props }) => {
           </Grid>
         </Grid> : <LoadingAnimation />)}
       </Grid>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right'}}
+        open={loading.state}
+        color='primary'
+        onClose={()=>setLoading({state: false, message: ''})}
+        message={loading.message}
+        autoHideDuration={2000}
+        key={'bottom-right'}
+        action={
+          <React.Fragment>
+            <IconButton
+              aria-label="close"
+              color="secondary"
+              className={classes.close}
+              onClick={()=>setLoading({state: false, message: ''})}
+            >
+              <CloseIcon />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
     </Grid>
   );
 

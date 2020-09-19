@@ -6,7 +6,8 @@ import { axiosInstance } from '../index';
  */
 const errorHelper = (error, variant) => {
   if (error.response === undefined) {
-    notify("Network Error");
+    notify("Network Error, You have been logged out");
+    logout();
     return false;
   }
   if (error.response.statusCode === 401) {

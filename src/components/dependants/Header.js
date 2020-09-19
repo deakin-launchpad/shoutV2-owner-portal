@@ -91,7 +91,7 @@ export const Header = () => {
   let isItDesktop = useMediaQuery('(min-width:600px) and (min-height:600px)');
   const classes = useStyles();
   const [open, setOpen] = useState(isItDesktop ? (LayoutConfig.sideMenu.default === 'open' ? true : false) : false);
-  const { pageTitle, headerElements } = useContext(LayoutContext);
+  const { headerElements } = useContext(LayoutContext);
   const handleDrawerOpen = () => {
     setOpen(true);
   };

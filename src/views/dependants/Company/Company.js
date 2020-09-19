@@ -5,7 +5,7 @@ import { API } from 'helpers/index';
 import { LoadingAnimation, notify } from 'components/index';
 // import { element, elementType } from 'prop-types';
 
-const useStyles = makeStyles(theme=>({
+const useStyles = makeStyles(theme => ({
   card: {
     padding: '20px',
     width: 'inherit'
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme=>({
     width: theme.spacing(10),
     height: theme.spacing(10)
   },
-  add:{
+  add: {
     width: theme.spacing(10),
     height: theme.spacing(10),
     fontSize: theme.spacing(10),
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme=>({
 }));
 const Company = () => {
   const classes = useStyles();
-  const [companies, setCompanies] = useState();
+  const [companies, setCompanies] = useState([]);
   const [isSelected, setIsSelected] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState();
   const [emailId, setEmailId] = useState('');
@@ -78,7 +78,7 @@ const Company = () => {
           <Grid item xs={12}>
             <Typography variant="h4">Companies</Typography>
           </Grid>
-          {companies ?
+          {companies && companies !== undefined && companies !== null?
             <Grid item container spacing={1}>
               {companies.map((element, i) => (
                 element.values.length === 0 ?
@@ -146,10 +146,10 @@ const Company = () => {
             <DialogActions>
               <Button onClick={handleDialogClose}>
                 Cancel
-            </Button>
+              </Button>
               <Button onClick={handleSubmit}>
                 Submit
-            </Button>
+              </Button>
             </DialogActions>
           </Dialog>
         </Grid>

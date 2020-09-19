@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, useMediaQuery} from '@material-ui/core';
+import { Grid, useMediaQuery } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 
@@ -8,7 +8,10 @@ const useStyles = makeStyles(theme => ({
     padding: "24px"
   },
   footer: {
-    background: "#626F7E"
+    background: "#626F7E",
+    // position: "fixed",
+    // bottom: 0,
+    // width: "100%"
   },
   title: {
     fontSize: "14px",
@@ -73,10 +76,10 @@ export const Footer = () => {
       <Grid container
         direction="row"
         justify="center" className={classes.root}
-        style={isItDesktop? {paddingTop: 0}: {marginBottom: '48px'}}
+        style={isItDesktop ? { paddingTop: 0 } : { marginBottom: '48px' }}
       >
         <Grid item sm={8} xs={12}>
-          <img src="/logo_white.svg" alt="Logo" style={{width: '100px'}} />
+          <img src="/logo_white.svg" alt="Logo" style={{ width: '100px' }} />
         </Grid>
         <Grid item sm={2} xs={12} className={classes.linkContainer}>
           <Link href="/help" className={isItDesktop ? classes.link : classes.linkMobile}>Help</Link>
